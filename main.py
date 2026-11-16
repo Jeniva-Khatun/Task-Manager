@@ -1,15 +1,25 @@
 from task_operation import add_task, view_tasks
+from task_crud import update_task, delete_task, complete_task, search_task
 
 tasks =[]
-print(tasks)
 
 while True:
-    print("\n===== PYTHON TASK MANAGER =====")
+    print("===== PYTHON TASK MANAGER =====")
     print("1. Add Task")
     print("2. View Tasks")
-    print("3. Exit")
+    print("3. Update Task")
+    print("4. Delete Task")
+    print("5. Mark Task as Completed")
+    print("6. Search Task")
+    print("7. Exit")
 
-    choice = int(input("Enter your choice: "))
+    try:
+        choice = int(input("Enter your choice: "))
+
+    except ValueError:
+        print("Invalid input! Please enter a number.")
+        continue
+
     if choice == 1:
         add_task(tasks)
 
@@ -17,9 +27,20 @@ while True:
         view_tasks(tasks)
 
     elif choice == 3:
-        print("Exiting Task Manager...")  
-        break
-     
-    else:
-        print("Invalid choice")     
+        update_task(tasks)
 
+    elif choice == 4:
+        delete_task(tasks)
+
+    elif choice == 5:
+        complete_task(tasks)
+
+    elif choice == 6:
+        search_task(tasks)
+
+    elif choice == 7:
+        print("Exiting Task Manager...")
+        break
+
+    else:
+        print("Invalid choice!")
