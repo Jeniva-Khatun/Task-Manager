@@ -1,7 +1,8 @@
 from task_operation import add_task, view_tasks
 from task_crud import update_task, delete_task, complete_task, search_task
+from task_storage import load_tasks , save_tasks
 
-tasks =[]
+tasks = load_tasks()
 
 while True:
     print("===== PYTHON TASK MANAGER =====")
@@ -22,18 +23,22 @@ while True:
 
     if choice == 1:
         add_task(tasks)
+        save_tasks(tasks)
 
     elif choice == 2:
         view_tasks(tasks)
 
     elif choice == 3:
         update_task(tasks)
+        save_tasks(tasks)
 
     elif choice == 4:
         delete_task(tasks)
+        save_tasks(tasks)
 
     elif choice == 5:
         complete_task(tasks)
+        save_tasks(tasks)
 
     elif choice == 6:
         search_task(tasks)
