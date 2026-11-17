@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "title": "Learn Python",
+        "description": "Practice Python concepts",
+        "priority": "High",
+        "status": "Pending"
+    },
+    {
+        "id": 2,
+        "title": "Build Task Manager",
+        "description": "Complete Day 6",
+        "priority": "Medium",
+        "status": "Pending"
+    },
+    {
+        "id": 3,
+        "title": "Practice SQL",
+        "description": "Learn database queries",
+        "priority": "Low",
+        "status": "Completed"
+    }
+]
