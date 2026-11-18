@@ -1,10 +1,13 @@
 
+from input_validation import validate_title 
 
 def add_task(tasks):
     print("\n===== ADD NEW TASK =====")
 
-    title = input("Enter task title: ")
+    title = validate_title()
+
     description = input("Enter task description: ")
+
     task_id = len(tasks) + 1
 
 
@@ -22,7 +25,7 @@ def view_tasks(tasks):
         
         print("\n===== YOUR TASKS =====")
 
-        if len(tasks) ==0:
+        if len(tasks) == 0:
                 print("No task available")
 
         else:
