@@ -1,28 +1,15 @@
-# tasks = [
-#     {
-#         "id": 1,
-#         "title": "Learn Python",
-#         "description": "Study dictionaries",
-#         "status": "Pending"
-#     },
-#     {
-#         "id": 2,
-#         "title": "Practice SQL",
-#         "description": "Learn SQL queries",
-#         "status": "Pending"
-#     }
-# ]
+from input_validation import validate_title , validate_task_id, task_exists
 
 def update_task(tasks):
     if not tasks:
         print("No tasks available!")
         return
 
-    task_id = int(input("Enter Task ID: "))
+    task_id = validate_task_id()
 
     for task in tasks:
         if task["id"] == task_id:
-            new_title = input("Enter new title: ")
+            new_title = validate_title()
             task["title"] = new_title
             print("Task updated successfully!")
             break
@@ -35,7 +22,11 @@ def delete_task(tasks):
         print("No tasks available!")
         return
 
-    task_id = int(input("Enter Task ID: "))
+    task_id = validate_task_id()
+
+    if not task_exists(tasks, task_id):
+        print("Task not found!")
+        return
 
     for task in tasks:
         if task["id"] == task_id:
@@ -51,7 +42,12 @@ def complete_task(tasks):
         print("No tasks available!")
         return
 
-    task_id = int(input("Enter Task ID: "))
+    task_id = validate_task_id()
+
+    if not task_exists(tasks, task_id):
+        print("Task not found!")
+        return
+
 
     for task in tasks:
         if task["id"] == task_id:
@@ -67,7 +63,11 @@ def search_task(tasks):
         print("No tasks available!")
         return
 
-    task_id = int(input("Enter Task ID: "))
+    task_id = validate_task_id()
+
+    if not task_exists(tasks, task_id):
+        print("Task not found!")
+        return
 
     for task in tasks:
         if task["id"] == task_id:
@@ -76,8 +76,6 @@ def search_task(tasks):
             print("Title:", task["title"])
             print("Description:", task["description"])
             print("Status:", task["status"])
-            break
-    else:
-        print("Task not found!")
-
+            return 
+    
 
