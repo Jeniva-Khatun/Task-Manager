@@ -2,7 +2,13 @@ from task_operation import add_task, view_tasks
 from task_crud import update_task, delete_task, complete_task, search_task
 from task_storage import load_tasks , save_tasks
 
+# Load saved tasks
 tasks = load_tasks()
+
+# Stop if saved data cannot be loaded safely
+if tasks is None:
+    print("Task Manager cannot start because the saved data is invalid.")
+    raise SystemExit(1)
 
 while True:
     print("===== PYTHON TASK MANAGER =====")
