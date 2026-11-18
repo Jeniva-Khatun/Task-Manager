@@ -68,11 +68,38 @@ def load_tasks():
         print("No previous tasks found.")
         return []
 
-    with open("tasks.json", "r") as file:
-        tasks = json.load(file)
+    try:
+        with open("tasks.json", "r") as file:
+            tasks = json.load(file)
 
-    print("Tasks loaded successfully!")
-    return tasks
+        # Check whether JSON contains a list
+        if not isinstance(tasks, list):
+             print("Error: Invalid task data format.")
+             return None
+
+        # Check whether each task is a dictionary
+        for task in tasks:
+             if not isinstance(task, dict):
+                print("Error: Invalid task data found.")
+                return None
+
+             if "id" not in task or "title" not in task:
+                print("Error: Task is missing required information.")
+                return None
+
+        print("Tasks loaded successfully!")
+        return tasks
+
+    except json.JSONDecodeError:
+        print("Error: JSON file is corrupted or empty.")
+        return None
+    except OSError as error:
+        print("Error reading tasks file:", error)
+        return None     
+
+
+    # print("Tasks loaded successfully!")
+    # return tasks
 
 
 # Save tasks into JSON file
@@ -82,4 +109,4 @@ def save_tasks(tasks):
         json.dump(tasks, file, indent=4)
 
     print("Tasks saved successfully!")   
-    print("File location:", os.path.abspath("tasks.json")) 
+    # print("File location:", os.path.abspath("tasks.json")) 
