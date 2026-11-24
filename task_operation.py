@@ -1,7 +1,7 @@
 
 
 from datetime import datetime,date
-from input_validation import validate_title
+from input_validation import validate_title, validate_priority
 from database import insert_task, get_all_tasks
 
 
@@ -11,7 +11,7 @@ def add_task():
 
     title = validate_title()
     description = input("Enter task description: ")
-    priority = input("Enter task priority (High/Medium/Low): ")
+    priority = validate_priority()
 
     while True:
         date_input = input("Enter due date (YYYY-MM-DD): ")
