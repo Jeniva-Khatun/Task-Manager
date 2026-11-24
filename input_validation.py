@@ -9,6 +9,18 @@ def validate_title():
             print("valid title !") 
             return title.strip()
 
+def validate_priority():
+    valid_priorities = ["high", "medium", "low"]
+
+    while True:
+        priority = input("Enter priority (High/Medium/Low): ").strip().lower()
+
+        if priority in valid_priorities:
+            print("Valid priority!")
+            return priority.capitalize()
+        else:
+            print("Error: Invalid priority! Choose High, Medium or Low.")        
+
 
 def validate_task_id():
     while True:
