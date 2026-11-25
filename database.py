@@ -45,44 +45,7 @@ def insert_task(title, description,priority,status,due_date):
     connection.close()
 
 
-def migrate_task(task_id, title, description, priority, status):
-    connection = create_connection()
-    cursor = connection.cursor()
 
-    cursor.execute("""
-        INSERT OR IGNORE INTO tasks
-        (id, title, description, priority, status)
-        VALUES (?, ?, ?, ?, ?)
-    """, (task_id, title, description, priority, status))
-
-    connection.commit()
-
-    if cursor.rowcount > 0:
-        print(f"Task {task_id} migrated successfully!")
-    else:
-        print(f"Task {task_id} already exists. Skipping migration.")
-
-    connection.close()  
-
-
-def migrate_json_to_sqlite():
-    if not os.path.exists("tasks.json"):
-        print("tasks.json not found!")
-        return
-
-    with open("tasks.json", "r") as file:
-        tasks = json.load(file)
-
-    for task in tasks:
-        migrate_task(
-            task["id"],
-            task["title"],
-            task.get("description", ""),
-            task.get("priority", "Medium"),
-            task.get("status", "Pending")
-        )
-
-    print("JSON migration completed!")      
 
 
 
@@ -242,9 +205,6 @@ def add_due_date_column():
 
         connection.commit()
         print("Due date column added successfully!")
-
-    else:
-        print("Due date column already exists!")
 
     connection.close()
 
