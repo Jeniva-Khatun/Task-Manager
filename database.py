@@ -1,7 +1,6 @@
 
 import sqlite3
-import json
-import os
+
 
 #Connect to the database
 def create_connection():
