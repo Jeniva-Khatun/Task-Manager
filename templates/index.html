@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Task Manager</h2>
+
+            <nav>
+                <a href="#" class="active">Dashboard</a>
+                <a href="#">All Tasks</a>
+                <a href="#">Completed</a>
+                <a href="#">Pending</a>
+            </nav>
+        </aside>
+
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Header -->
+            <header class="header">
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Manage your tasks efficiently.</p>
+                </div>
+
+                <button class="add-button">+ Add Task</button>
+            </header>
+
+
+            <!-- Statistics -->
+            <section class="stats">
+
+                <div class="stat-card">
+                    <h3>Total Tasks</h3>
+                    <p>12</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Completed</h3>
+                    <p>5</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Pending</h3>
+                    <p>7</p>
+                </div>
+
+            </section>
+
+
+            <!-- Task List -->
+            <section class="task-section">
+
+                <h2>Recent Tasks</h2>
+
+                <div class="task-item">
+                    <h3>Learn Python</h3>
+                    <p>Priority: High | Status: Pending</p>
+                </div>
+
+                <div class="task-item">
+                    <h3>Build Flask Project</h3>
+                    <p>Priority: Medium | Status: Pending</p>
+                </div>
+
+                <div class="task-item">
+                    <h3>Practice SQL</h3>
+                    <p>Priority: High | Status: Completed</p>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
